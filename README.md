@@ -1,16 +1,17 @@
-# haru_hanjul
+# 프로젝트 소개
 
-하루 한줄 감정 일기
+## 1. 프로젝트 이름
+하루한줄
 
-## Getting Started
+## 2. 프로젝트 개요
+사용자가 오늘 하루 일기를 적으면 그 일기 내용을 토대로 내용을 요약하고 글을 판단하여 어떠한 감정인지 이모티콘으로 표시해주는 애플리케이션입니다. 적은 글을 나중에도 볼 수 있어 사용자에게 자신의 하루를 되돌아보고 추억을 제공합니다.
 
-This project is a starting point for a Flutter application.
+## 3. 주요 기능
+- 사용자의 하루를 적을 수 있는 기능
+- 적은 일기를 제출해주면 글을 읽고 요약해주는 기능
+- 읽은 글을 바탕으로 사용자의 기분을 판단해주는 기능
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 4. 개발 목적
+- Flutter 및 Dart 공부 및 이해
+- API사용 숙달
+- 프로젝트 진행 방식 이해
