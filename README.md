@@ -1,9 +1,9 @@
 # 🌟 하루한줄 (One Line a Day)
 
-[간트차트](https://www.notion.so/1f916e331d3380899f21efb2f3005f2a?v=1f916e331d3380babb3f000c7779ac8c&pvs=4)
+[간트차트](hhttps://www.notion.so/1f942f036609808b831adc7c932b91ba?v=1f942f036609811ebfa2000c717bd241&pvs=4)
 
 > 하루를 기록하고, 감정을 이모티콘으로 표현해보세요.
-> 
+>
 
 '하루한줄'은 사용자가 하루 동안의 일기를 작성하면, 해당 내용을 요약하고 감정을 분석하여 이모티콘으로 시각화해주는 모바일 애플리케이션입니다. Flutter와 Dart를 활용하여 개발되었으며, Android와 iOS 플랫폼을 모두 지원합니다.
 
@@ -22,8 +22,7 @@
 
 - Flutter 및 Dart에 대한 이해 및 실습
 - 외부 API 사용 경험 습득
-- 프로젝트 진행 방식 및 협업 도구에 대한 이해[DhiWise+1GitHub+1](https://www.dhiwise.com/use-case/canny-flutter-app?utm_source=chatgpt.com)
-
+- 프로젝트 진행 방식 및 협업 도구에 대한 이해
 ---
 
 ## 🛠️ 기술 스택
@@ -31,8 +30,7 @@
 - **프론트엔드**: Flutter (Dart)
 - **백엔드**: Firebase 또는 Node.js
 - **데이터베이스**: Firebase Firestore 또는 MongoDB
-- **외부 API**: OpenAI API (요약 및 감정 분석)[DhiWise+1GitHub+1](https://www.dhiwise.com/use-case/canny-flutter-app?utm_source=chatgpt.com)
-
+- **외부 API**: OpenAI API (요약 및 감정 분석)
 ---
 
 ## 🗓️ 개발 일정
