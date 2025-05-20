@@ -1,52 +1,26 @@
 import 'package:flutter/material.dart';
-import '../services/kobart_api_service.dart';
+import 'input_screen.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  final TextEditingController _controller = TextEditingController();
-  String _result = '';
-  bool _loading = false;
-
-  Future<void> _summarizeText() async {
-    setState(() => _loading = true);
-    final summary = await KobartApiService.summarize(_controller.text);
-    setState(() {
-      _result = summary;
-      _loading = false;
-    });
-  }
-
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("하루 한줄")),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      appBar: AppBar(title: Text('하루한줄')),
+      body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextField(
-              controller: _controller,
-              maxLines: 5,
-              decoration: const InputDecoration(
-                hintText: "오늘 하루 있었던 감정을 자유롭게 적어보세요",
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 12),
+            Icon(Icons.edit, size: 100, color: Colors.deepPurple),
+            SizedBox(height: 20),
             ElevatedButton(
-              onPressed: _summarizeText,
-              child: const Text("감정 요약하기"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => InputScreen()),
+                );
+              },
+              child: Text("오늘의 감정 기록하기"),
             ),
-            const SizedBox(height: 20),
-            _loading
-                ? const CircularProgressIndicator()
-                : Text(_result, style: const TextStyle(fontSize: 16)),
           ],
         ),
       ),
