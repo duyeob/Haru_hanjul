@@ -15,15 +15,6 @@
 - Flutter 및 Dart 공부 및 이해
 - API사용 숙달
 - 프로젝트 진행 방식 이해
-<<<<<<< HEAD
-dd
-=======
 
 [Notion](google.com)
 
-- d
-- 
-- 
-- w 
-[간트차트]
->>>>>>> 548b62151c14cae68b18b9ee53c1a0682d71585f
