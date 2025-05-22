@@ -10,12 +10,13 @@ class SummaryScreen extends StatefulWidget {
   final String summary;
   final String emotion;
 
-  SummaryScreen({
+  const SummaryScreen({
+    Key? key,
     required this.diaryId,
     required this.originalText,
     required this.summary,
     required this.emotion,
-  });
+  }) : super(key: key);
 
   @override
   State<SummaryScreen> createState() => _SummaryScreenState();
@@ -25,7 +26,7 @@ class _SummaryScreenState extends State<SummaryScreen> {
   bool _isSaving = false;
   bool _saved = false;
 
-  void _saveDiary() async {
+  Future<void> _saveDiary() async {
     setState(() => _isSaving = true);
 
     final diaryBox = Hive.box<DiaryEntry>('diaryBox');
@@ -51,36 +52,33 @@ class _SummaryScreenState extends State<SummaryScreen> {
     final color = EmotionMapper.getColor(widget.emotion);
 
     return Scaffold(
-      appBar: AppBar(title: Text('요약 결과')),
+      appBar: AppBar(title: const Text('요약 결과')),
       body: Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('요약:', style: TextStyle(fontWeight: FontWeight.bold)),
-            SizedBox(height: 8),
+            const Text('요약:', style: TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
             Text(widget.summary),
-            SizedBox(height: 24),
-            Text('감정:', style: TextStyle(fontWeight: FontWeight.bold)),
-            SizedBox(height: 8),
+            const SizedBox(height: 24),
+            const Text('감정:', style: TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
             Row(
               children: [
-                Text(emoji, style: TextStyle(fontSize: 30)),
-                SizedBox(width: 8),
-                Text(
-                  widget.emotion,
-                  style: TextStyle(fontSize: 24, color: color),
-                ),
+                Text(emoji, style: const TextStyle(fontSize: 30)),
+                const SizedBox(width: 8),
+                Text(widget.emotion, style: TextStyle(fontSize: 24, color: color)),
               ],
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             _saved
-                ? Text('저장되었습니다!', style: TextStyle(color: Colors.green))
+                ? const Text('저장되었습니다!', style: TextStyle(color: Colors.green))
                 : ElevatedButton(
               onPressed: _isSaving ? null : _saveDiary,
               child: _isSaving
-                  ? CircularProgressIndicator()
-                  : Text('일기 저장하기'),
+                  ? const CircularProgressIndicator()
+                  : const Text('일기 저장하기'),
             ),
           ],
         ),
