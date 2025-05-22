@@ -7,7 +7,7 @@ import '../services/emotion_service.dart' as emotion;
 import 'summary_screen.dart';
 
 class InputScreen extends StatefulWidget {
-  const InputScreen({Key? key}) : super(key: key);
+  const InputScreen({super.key});
 
   @override
   State<InputScreen> createState() => _InputScreenState();

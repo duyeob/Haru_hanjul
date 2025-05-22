@@ -5,7 +5,7 @@ import '../utils/emotion_mapper.dart';
 class DiaryDetailScreen extends StatelessWidget {
   final DiaryEntry diary;
 
-  DiaryDetailScreen({required this.diary});
+  const DiaryDetailScreen({super.key, required this.diary});
 
   @override
   Widget build(BuildContext context) {

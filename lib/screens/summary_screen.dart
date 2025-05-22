@@ -11,12 +11,12 @@ class SummaryScreen extends StatefulWidget {
   final String emotion;
 
   const SummaryScreen({
-    Key? key,
+    super.key,
     required this.diaryId,
     required this.originalText,
     required this.summary,
     required this.emotion,
-  }) : super(key: key);
+  });
 
   @override
   State<SummaryScreen> createState() => _SummaryScreenState();

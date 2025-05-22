@@ -4,6 +4,8 @@ import '../models/diary_entry.dart';
 import 'diary_detail_screen.dart';
 
 class DiaryListScreen extends StatelessWidget {
+  const DiaryListScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final diaryBox = Hive.box<DiaryEntry>('diaryBox');
@@ -26,7 +28,7 @@ class DiaryListScreen extends StatelessWidget {
               final diary = entries[index];
               return ListTile(
                 title: Text(diary.summary.length > 30
-                    ? diary.summary.substring(0, 30) + '...'
+                    ? '${diary.summary.substring(0, 30)}...'
                     : diary.summary),
                 subtitle: Text(
                   '${diary.createdAt.toLocal()}'.split(' ')[0],
