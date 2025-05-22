@@ -1,4 +1,4 @@
-# 🌟 하루한줄 (One Line a Day)
+# 🌟 하루한줄 (Haru-Hanjul)
 
 [간트차트](https://www.notion.so/1f942f036609808b831adc7c932b91ba?v=1f942f036609811ebfa2000c717bd241&pvs=4)
 
