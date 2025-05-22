@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
-import '../services/summary_service.dart';
-import '../services/emotion_service.dart';
+import '../services/summary_service.dart' as summary;
+import '../services/emotion_service.dart' as emotion;
+
 import 'summary_screen.dart';
 
 class InputScreen extends StatefulWidget {
@@ -14,7 +15,7 @@ class InputScreen extends StatefulWidget {
 
 class _InputScreenState extends State<InputScreen> {
   final TextEditingController _controller = TextEditingController();
-  final _uuid = Uuid();
+  final _uuid = const Uuid();
 
   bool _isLoading = false;
 
@@ -34,8 +35,8 @@ class _InputScreenState extends State<InputScreen> {
     final diaryId = _uuid.v4();
 
     // 요약 & 감정 분석 API 호출
-    final summary = await SummaryService.summarizeText(text);
-    final emotion = await EmotionService.analyzeEmotion(text);
+    final summaryText = await summary.SummaryService.summarizeText(text);
+    final emotionText = await emotion.EmotionService.analyzeEmotion(text);
 
     setState(() {
       _isLoading = false;
@@ -47,8 +48,8 @@ class _InputScreenState extends State<InputScreen> {
         builder: (_) => SummaryScreen(
           diaryId: diaryId,
           originalText: text,
-          summary: summary,
-          emotion: emotion,
+          summary: summaryText,
+          emotion: emotionText,
         ),
       ),
     );
