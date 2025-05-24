@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class SummaryService {
-  static const String _baseUrl = 'http://172.30.1.39:3000';
+  static const String _baseUrl = 'http://localhost:3000';
 
   static Future<String> summarizeText(String text) async {
     final response = await http.post(
