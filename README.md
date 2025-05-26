@@ -45,6 +45,11 @@
 | 6주차 이후 | 기능 개선 및 유지보수 |
 
 ---
+## API
+
+- [Hugging face](https://huggingface.co/)
+
+---
 
 ## 🌈 기대 효과
 
