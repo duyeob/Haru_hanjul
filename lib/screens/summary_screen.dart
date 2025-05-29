@@ -73,7 +73,7 @@ class _SummaryScreenState extends State<SummaryScreen> {
             ),
             const SizedBox(height: 40),
             _saved
-                ? const Text('저장되었습니다!', style: TextStyle(color: Colors.green))
+                ? const Text('저장완료!', style: TextStyle(color: Colors.green))
                 : ElevatedButton(
               onPressed: _isSaving ? null : _saveDiary,
               child: _isSaving
