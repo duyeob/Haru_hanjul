@@ -30,7 +30,7 @@
 - **프론트엔드**: Flutter (Dart)
 - **백엔드**: Firebase 또는 Node.js
 - **데이터베이스**: Firebase Firestore 또는 MongoDB
-- **외부 API**: OpenAI API (요약 및 감정 분석)
+- **외부 API**: OpenAI API, Hugging Face (요약 및 감정 분석)
 ---
 
 ## 🗓️ 개발 일정
