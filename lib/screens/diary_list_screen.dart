@@ -1,46 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import '../models/diary_entry.dart';
-import 'diary_detail_screen.dart';
 
-class DiaryListScreen extends StatelessWidget {
+class DiaryListScreen extends StatefulWidget {
   const DiaryListScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final diaryBox = Hive.box<DiaryEntry>('diaryBox');
+  State<DiaryListScreen> createState() => _DiaryListScreenState();
+}
 
+class _DiaryListScreenState extends State<DiaryListScreen> {
+  late Box<DiaryEntry> diaryBox;
+
+  @override
+  void initState() {
+    super.initState();
+    diaryBox = Hive.box<DiaryEntry>('diaryBox');
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('일기 보관함')),
+      appBar: AppBar(title: const Text('일기 목록')),
       body: ValueListenableBuilder(
         valueListenable: diaryBox.listenable(),
         builder: (context, Box<DiaryEntry> box, _) {
-          if (box.values.isEmpty) {
-            return Center(child: Text('저장된 일기가 없습니다.'));
+          if (box.isEmpty) {
+            return const Center(child: Text('작성된 일기가 없습니다.'));
           }
 
-          final entries = box.values.toList()
-            ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
+          final entries = box.values.toList().reversed.toList();
 
           return ListView.builder(
             itemCount: entries.length,
             itemBuilder: (context, index) {
-              final diary = entries[index];
+              final entry = entries[index];
+
               return ListTile(
-                title: Text(diary.summary.length > 30
-                    ? '${diary.summary.substring(0, 30)}...'
-                    : diary.summary),
-                subtitle: Text(
-                  '${diary.createdAt.toLocal()}'.split(' ')[0],
+                title: Text(
+                  entry.summary,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => DiaryDetailScreen(diary: diary),
-                    ),
-                  );
-                },
+                subtitle: Text(
+                  '${entry.createdAt.toLocal()} - 감정: ${entry.emotion} (${(entry.emotionScore * 100).toStringAsFixed(1)}%)',
+                ),
               );
             },
           );
