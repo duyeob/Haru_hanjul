@@ -5,19 +5,22 @@ part 'diary_entry.g.dart';
 @HiveType(typeId: 0)
 class DiaryEntry extends HiveObject {
   @HiveField(0)
-  final String id;
+  String id;
 
   @HiveField(1)
-  final String originalText;
+  String originalText;
 
   @HiveField(2)
-  final String summary;
+  String summary;
 
   @HiveField(3)
-  final String emotion;
+  String emotion;
 
   @HiveField(4)
-  final DateTime createdAt;
+  DateTime createdAt;
+
+  @HiveField(5)
+  double emotionScore; // 새로 추가된 필드
 
   DiaryEntry({
     required this.id,
@@ -25,5 +28,6 @@ class DiaryEntry extends HiveObject {
     required this.summary,
     required this.emotion,
     required this.createdAt,
+    required this.emotionScore,
   });
 }

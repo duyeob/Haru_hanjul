@@ -26,8 +26,9 @@ class _InputScreenState extends State<InputScreen> {
 
     try {
       final result = await ApiService.processDiary(text);
-      final summary = result['summary'] ?? '요약 정보 없음';
+      final summary = result['summary'] ?? '';
       final emotion = result['emotion'] ?? 'neutral';
+      final emotionScore = result['emotion_score'] ?? 0.0;
 
       setState(() => _isLoading = false);
 
@@ -38,6 +39,7 @@ class _InputScreenState extends State<InputScreen> {
             originalText: text,
             summary: summary,
             emotion: emotion,
+            emotionScore: emotionScore,
           ),
         ),
       );

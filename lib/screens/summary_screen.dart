@@ -6,12 +6,14 @@ class SummaryScreen extends StatelessWidget {
   final String originalText;
   final String summary;
   final String emotion;
+  final double emotionScore;
 
   const SummaryScreen({
     super.key,
     required this.originalText,
     required this.summary,
     required this.emotion,
+    required this.emotionScore,
   });
 
   String getEmoji(String emotion) {
@@ -47,6 +49,7 @@ class SummaryScreen extends StatelessWidget {
       originalText: originalText,
       summary: summary,
       emotion: emotion,
+      emotionScore: emotionScore,
       createdAt: DateTime.now(),
     );
     await diaryBox.put(newEntry.id, newEntry);
@@ -55,7 +58,7 @@ class SummaryScreen extends StatelessWidget {
       const SnackBar(content: Text('일기가 저장되었습니다.')),
     );
 
-    Navigator.popUntil(context, (route) => route.isFirst); // 입력 화면으로 복귀
+    Navigator.popUntil(context, (route) => route.isFirst);
   }
 
   @override
@@ -85,7 +88,10 @@ class SummaryScreen extends StatelessWidget {
                 children: [
                   Text(emoji, style: const TextStyle(fontSize: 30)),
                   const SizedBox(width: 8),
-                  Text(emotion, style: TextStyle(fontSize: 24, color: color)),
+                  Text(
+                    '$emotion (${(emotionScore * 100).toStringAsFixed(1)}%)',
+                    style: TextStyle(fontSize: 24, color: color),
+                  ),
                 ],
               ),
               const SizedBox(height: 40),

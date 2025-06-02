@@ -22,13 +22,14 @@ class DiaryEntryAdapter extends TypeAdapter<DiaryEntry> {
       summary: fields[2] as String,
       emotion: fields[3] as String,
       createdAt: fields[4] as DateTime,
+      emotionScore: fields[5] as double,
     );
   }
 
   @override
   void write(BinaryWriter writer, DiaryEntry obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -38,7 +39,9 @@ class DiaryEntryAdapter extends TypeAdapter<DiaryEntry> {
       ..writeByte(3)
       ..write(obj.emotion)
       ..writeByte(4)
-      ..write(obj.createdAt);
+      ..write(obj.createdAt)
+      ..writeByte(5)
+      ..write(obj.emotionScore);
   }
 
   @override
