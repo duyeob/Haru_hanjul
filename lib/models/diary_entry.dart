@@ -5,19 +5,19 @@ part 'diary_entry.g.dart';
 @HiveType(typeId: 0)
 class DiaryEntry extends HiveObject {
   @HiveField(0)
-  String id;
+  final String id;
 
   @HiveField(1)
-  String originalText;
+  final String originalText;
 
   @HiveField(2)
-  String summary;
+  final String summary;
 
   @HiveField(3)
-  String emotion;
+  final String emotion;
 
   @HiveField(4)
-  DateTime createdAt;
+  final DateTime createdAt;
 
   DiaryEntry({
     required this.id,

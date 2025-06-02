@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uuid/uuid.dart';
-
-import '../services/summary_service.dart' as summary;
-import '../services/emotion_service.dart' as emotion;
-
+import '../services/api_service.dart';
 import 'summary_screen.dart';
 
 class InputScreen extends StatefulWidget {
@@ -15,11 +11,9 @@ class InputScreen extends StatefulWidget {
 
 class _InputScreenState extends State<InputScreen> {
   final TextEditingController _controller = TextEditingController();
-  final _uuid = const Uuid();
-
   bool _isLoading = false;
 
-  void _goToSummary() async {
+  void _processDiary() async {
     final text = _controller.text.trim();
     if (text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -28,31 +22,31 @@ class _InputScreenState extends State<InputScreen> {
       return;
     }
 
-    setState(() {
-      _isLoading = true;
-    });
+    setState(() => _isLoading = true);
 
-    final diaryId = _uuid.v4();
+    try {
+      final result = await ApiService.processDiary(text);
+      final summary = result['summary'] ?? '요약 정보 없음';
+      final emotion = result['emotion'] ?? 'neutral';
 
-    // 요약 & 감정 분석 API 호출
-    final summaryText = await summary.SummaryService.summarizeText(text);
-    final emotionText = await emotion.EmotionService.analyzeEmotion(text);
+      setState(() => _isLoading = false);
 
-    setState(() {
-      _isLoading = false;
-    });
-
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (_) => SummaryScreen(
-          diaryId: diaryId,
-          originalText: text,
-          summary: summaryText,
-          emotion: emotionText,
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => SummaryScreen(
+            originalText: text,
+            summary: summary,
+            emotion: emotion,
+          ),
         ),
-      ),
-    );
+      );
+    } catch (e) {
+      setState(() => _isLoading = false);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('에러 발생: $e')),
+      );
+    }
   }
 
   @override
@@ -75,7 +69,7 @@ class _InputScreenState extends State<InputScreen> {
             _isLoading
                 ? const CircularProgressIndicator()
                 : ElevatedButton(
-              onPressed: _goToSummary,
+              onPressed: _processDiary,
               child: const Text('요약 및 감정 분석'),
             ),
           ],

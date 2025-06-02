@@ -5,7 +5,7 @@ part of 'diary_entry.dart';
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
-// w????? 왜 갑자기 돼?????
+
 class DiaryEntryAdapter extends TypeAdapter<DiaryEntry> {
   @override
   final int typeId = 0;
