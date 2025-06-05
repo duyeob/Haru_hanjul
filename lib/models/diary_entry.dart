@@ -19,15 +19,11 @@ class DiaryEntry extends HiveObject {
   @HiveField(4)
   DateTime createdAt;
 
-  @HiveField(5)
-  double emotionScore; // 새로 추가된 필드
-
   DiaryEntry({
     required this.id,
     required this.originalText,
     required this.summary,
     required this.emotion,
     required this.createdAt,
-    required this.emotionScore,
   });
 }

@@ -1,52 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive/hive.dart';
 import '../models/diary_entry.dart';
+import 'diary_detail_screen.dart';
+import '../widgets/emotion_chart.dart';
 
-class DiaryListScreen extends StatefulWidget {
+class DiaryListScreen extends StatelessWidget {
   const DiaryListScreen({super.key});
 
   @override
-  State<DiaryListScreen> createState() => _DiaryListScreenState();
-}
-
-class _DiaryListScreenState extends State<DiaryListScreen> {
-  late Box<DiaryEntry> diaryBox;
-
-  @override
-  void initState() {
-    super.initState();
-    diaryBox = Hive.box<DiaryEntry>('diaryBox');
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final diaryBox = Hive.box<DiaryEntry>('diaryBox');
+    final entries = diaryBox.values.toList().reversed.toList();
+
     return Scaffold(
       appBar: AppBar(title: const Text('일기 목록')),
-      body: ValueListenableBuilder(
-        valueListenable: diaryBox.listenable(),
-        builder: (context, Box<DiaryEntry> box, _) {
-          if (box.isEmpty) {
-            return const Center(child: Text('작성된 일기가 없습니다.'));
-          }
-
-          final entries = box.values.toList().reversed.toList();
-
-          return ListView.builder(
-            itemCount: entries.length,
-            itemBuilder: (context, index) {
-              final entry = entries[index];
-
-              return ListTile(
-                title: Text(
-                  entry.summary,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                subtitle: Text(
-                  '${entry.createdAt.toLocal()} - 감정: ${entry.emotion} (${(entry.emotionScore * 100).toStringAsFixed(1)}%)',
-                ),
-              );
-            },
+      body: entries.isEmpty
+          ? const Center(child: Text('저장된 일기가 없습니다.'))
+          : ListView.builder(
+        itemCount: entries.length + 1,
+        itemBuilder: (context, index) {
+          if (index == 0) return const SizedBox(height: 200, child: EmotionChart());
+          final entry = entries[index - 1];
+          return ListTile(
+            title: Text(entry.summary),
+            subtitle: Text(entry.createdAt.toLocal().toString().split(' ')[0]),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => DiaryDetailScreen(entry: entry),
+              ),
+            ),
           );
         },
       ),

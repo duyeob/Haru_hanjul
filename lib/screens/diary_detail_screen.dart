@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/diary_entry.dart';
+import '../utils/emotion_mapper.dart';
 
 class DiaryDetailScreen extends StatelessWidget {
   final DiaryEntry entry;
@@ -8,29 +9,32 @@ class DiaryDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final emoji = getEmoji(entry.emotion);
+    final color = getColor(entry.emotion);
+
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('일기 상세보기'),
-      ),
+      appBar: AppBar(title: const Text('일기 상세 보기')),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
           children: [
-            Text('작성일: ${entry.createdAt.toLocal()}',
-                style: const TextStyle(fontWeight: FontWeight.bold)),
-            const SizedBox(height: 16),
-            const Text('원본 일기:', style: TextStyle(fontWeight: FontWeight.bold)),
-            const SizedBox(height: 8),
+            const Text('날짜', style: TextStyle(fontWeight: FontWeight.bold)),
+            Text(entry.createdAt.toLocal().toString()),
+            const SizedBox(height: 12),
+            const Text('원문', style: TextStyle(fontWeight: FontWeight.bold)),
             Text(entry.originalText),
-            const SizedBox(height: 16),
-            const Text('요약:', style: TextStyle(fontWeight: FontWeight.bold)),
-            const SizedBox(height: 8),
+            const SizedBox(height: 12),
+            const Text('요약', style: TextStyle(fontWeight: FontWeight.bold)),
             Text(entry.summary),
-            const SizedBox(height: 16),
-            const Text('감정:', style: TextStyle(fontWeight: FontWeight.bold)),
-            const SizedBox(height: 8),
-            Text(entry.emotion),
+            const SizedBox(height: 12),
+            const Text('감정', style: TextStyle(fontWeight: FontWeight.bold)),
+            Row(
+              children: [
+                Text(emoji, style: const TextStyle(fontSize: 30)),
+                const SizedBox(width: 8),
+                Text(entry.emotion, style: TextStyle(fontSize: 24, color: color)),
+              ],
+            ),
           ],
         ),
       ),

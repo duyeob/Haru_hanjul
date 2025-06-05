@@ -1,19 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:fl_chart/fl_chart.dart';
+import '../models/diary_entry.dart';
 
-class EmotionInput extends StatelessWidget {
-  final TextEditingController controller;
-
-  const EmotionInput({super.key, required this.controller});
+class EmotionChart extends StatelessWidget {
+  const EmotionChart({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      maxLines: 5,
-      decoration: const InputDecoration(
-        hintText: "오늘 하루 있었던 감정을 자유롭게 적어보세요",
-        border: OutlineInputBorder(),
-      ),
-    );
+    final diaryBox = Hive.box<DiaryEntry>('diaryBox');
+    final entries = diaryBox.values.toList();
+
+    final counts = {'positive': 0, 'neutral': 0, 'negative': 0};
+    for (var entry in entries) {
+      counts[entry.emotion.toLowerCase()] = (counts[entry.emotion.toLowerCase()] ?? 0) + 1;
+    }
+
+    final sections = [
+      PieChartSectionData(color: Colors.green, value: counts['positive']!.toDouble(), title: '😊'),
+      PieChartSectionData(color: Colors.grey, value: counts['neutral']!.toDouble(), title: '😐'),
+      PieChartSectionData(color: Colors.red, value: counts['negative']!.toDouble(), title: '😢'),
+    ];
+
+    return PieChart(PieChartData(sections: sections));
   }
 }
