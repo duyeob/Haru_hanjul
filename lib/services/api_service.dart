@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  static const String _url = 'http://localhost:5000/summarize';
+  static const String _url = 'http://10.0.1.116:5000/summarize';
 
   static Future<Map<String, String>> analyzeText(String text) async {
     final response = await http.post(
