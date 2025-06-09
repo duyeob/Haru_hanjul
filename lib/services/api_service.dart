@@ -2,13 +2,11 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  static const String baseUrl = 'http://localhost:5000';
+  static const String _url = 'http://10.0.1.116:5000/summarize';
 
-  static Future<Map<String, String>> processDiary(String text) async {
-    final url = Uri.parse('$baseUrl/summarize');
-
+  static Future<Map<String, String>> analyzeText(String text) async {
     final response = await http.post(
-      url,
+      Uri.parse(_url),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({'text': text}),
     );
@@ -16,11 +14,28 @@ class ApiService {
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
       return {
-        'summary': data['summary'],
-        'emotion': data['emotion'],
+        'summary': data['summary'] ?? '',
+        'emotion': data['emotion'] ?? 'Unknown',
       };
     } else {
-      throw Exception('분석 실패: ${response.body}');
+      throw Exception('서버 통신 실패');
     }
+  }
+}
+
+
+// emotion_mapper.dart
+String mapEmotionToEmoji(String emotion) {
+  switch (emotion.toLowerCase()) {
+    case 'happy':
+      return '😊';
+    case 'sad':
+      return '😢';
+    case 'angry':
+      return '😡';
+    case 'neutral':
+      return '😐';
+    default:
+      return '❓';
   }
 }

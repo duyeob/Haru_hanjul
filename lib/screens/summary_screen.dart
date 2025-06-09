@@ -1,37 +1,58 @@
 import 'package:flutter/material.dart';
-import '../models/diary_entry.dart';
+import 'package:uuid/uuid.dart';
 import 'package:hive/hive.dart';
+import '../models/diary_entry.dart';
+import '../services/api_service.dart';
 import '../utils/emotion_mapper.dart';
-import 'diary_list_screen.dart';
 
-class SummaryScreen extends StatelessWidget {
+class SummaryScreen extends StatefulWidget {
   final String originalText;
-  final String summary;
-  final String emotion;
+  const SummaryScreen({super.key, required this.originalText});
 
-  const SummaryScreen({
-    super.key,
-    required this.originalText,
-    required this.summary,
-    required this.emotion,
-  });
+  @override
+  State<SummaryScreen> createState() => _SummaryScreenState();
+}
 
-  void _saveDiary(BuildContext context) async {
-    final diaryBox = Hive.box<DiaryEntry>('diaryBox');
-    final newEntry = DiaryEntry(
-      id: DateTime.now().millisecondsSinceEpoch.toString(),
-      originalText: originalText,
-      summary: summary,
-      emotion: emotion,
-      createdAt: DateTime.now(),
-    );
-    await diaryBox.put(newEntry.id, newEntry);
+class _SummaryScreenState extends State<SummaryScreen> {
+  String summary = '';
+  String emotion = '';
+  bool isLoading = true;
 
-    Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(builder: (_) => const DiaryListScreen()),
-          (_) => false,
-    );
+  @override
+  void initState() {
+    super.initState();
+    _processEntry();
+  }
+
+  Future<void> _processEntry() async {
+    try {
+      final result = await ApiService.analyzeText(widget.originalText);
+      setState(() {
+        summary = result['summary']!;
+        emotion = result['emotion']!;
+        isLoading = false;
+      });
+
+      final newEntry = DiaryEntry(
+        id: const Uuid().v4(),
+        originalText: widget.originalText,
+        summary: summary,
+        emotion: emotion,
+        createdAt: DateTime.now(),
+      );
+      final box = Hive.box<DiaryEntry>('diaryBox');
+      await box.put(newEntry.id, newEntry);
+    } catch (e) {
+      setState(() {
+        isLoading = false;
+        summary = '에러 발생';
+        emotion = 'Unknown';
+      });
+    }
+  }
+
+  void _goToDiaryList() {
+    Navigator.pushNamed(context, '/list');
   }
 
   @override
@@ -40,31 +61,90 @@ class SummaryScreen extends StatelessWidget {
     final color = getColor(emotion);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('요약 결과')),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: ListView(
-          children: [
-            const Text('원본 일기:', style: TextStyle(fontWeight: FontWeight.bold)),
-            Text(originalText),
-            const SizedBox(height: 16),
-            const Text('요약:', style: TextStyle(fontWeight: FontWeight.bold)),
-            Text(summary),
-            const SizedBox(height: 16),
-            const Text('감정:', style: TextStyle(fontWeight: FontWeight.bold)),
-            Row(
-              children: [
-                Text(emoji, style: const TextStyle(fontSize: 30)),
-                const SizedBox(width: 8),
-                Text(emotion, style: TextStyle(fontSize: 24, color: color)),
-              ],
-            ),
-            const SizedBox(height: 30),
-            ElevatedButton(
-              onPressed: () => _saveDiary(context),
-              child: const Text('저장하고 목록으로'),
-            ),
-          ],
+      backgroundColor: const Color(0xFFF7F7F7),
+      appBar: AppBar(
+        title: const Text('분석 결과'),
+        backgroundColor: Colors.teal,
+      ),
+      body: Center(
+        child: isLoading
+            ? const CircularProgressIndicator()
+            : Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Card(
+                elevation: 4,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      const Text(
+                        '요약 결과',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      Text(
+                        summary,
+                        style: const TextStyle(fontSize: 16),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 24),
+              Column(
+                children: [
+                  const Text(
+                    '감정 분석',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  CircleAvatar(
+                    radius: 30,
+                    backgroundColor: color.withOpacity(0.2),
+                    child: Text(
+                      emoji,
+                      style: const TextStyle(fontSize: 30),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    emotion.toUpperCase(),
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: color,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 40),
+              ElevatedButton.icon(
+                onPressed: _goToDiaryList,
+                icon: const Icon(Icons.list),
+                label: const Text('일기 목록 보기'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal,
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 24, vertical: 14),
+                  textStyle: const TextStyle(fontSize: 16),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
