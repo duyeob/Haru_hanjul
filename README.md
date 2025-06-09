@@ -1,7 +1,8 @@
 # 🌟 하루한줄 (Haru-Hanjul)
 
 [📅 간트 차트 바로가기](https://www.notion.so/1f942f036609808b831adc7c932b91ba?v=1f942f036609811ebfa2000c717bd241&pvs=4)
-![image](https://github.com/user-attachments/assets/84c20d1b-80d8-48b6-9e9b-b7db2af5fea9)
+![image](https://github.com/user-attachments/assets/d66334b6-7294-42ff-bac0-7082357b2901)
+
 
 
 > 하루를 기록하고, 감정을 이모티콘으로 표현해보세요.
