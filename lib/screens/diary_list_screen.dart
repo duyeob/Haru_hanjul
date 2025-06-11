@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import '../models/diary_entry.dart';
 import 'diary_detail_screen.dart';
+import 'input_screen.dart'; // 입력 화면 import 추가
 import '../widgets/emotion_chart.dart';
 
 class DiaryListScreen extends StatefulWidget {
@@ -53,6 +54,18 @@ class _DiaryListScreenState extends State<DiaryListScreen> {
       appBar: AppBar(
         title: const Text('일기 목록'),
         backgroundColor: Colors.teal,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.add),
+            tooltip: '일기 쓰기',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const InputScreen()),
+              );
+            },
+          ),
+        ],
       ),
       body: entries.isEmpty
           ? const Center(
@@ -111,7 +124,8 @@ class _DiaryListScreenState extends State<DiaryListScreen> {
                         ),
                       ),
                       trailing: IconButton(
-                        icon: const Icon(Icons.delete, color: Colors.red),
+                        icon:
+                        const Icon(Icons.delete, color: Colors.red),
                         onPressed: () => _confirmDelete(entry.id),
                       ),
                     ),

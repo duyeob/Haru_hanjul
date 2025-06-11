@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+
 part 'diary_entry.g.dart';
 
 @HiveType(typeId: 0)
@@ -25,4 +26,21 @@ class DiaryEntry extends HiveObject {
     required this.emotion,
     required this.createdAt,
   });
+
+  /// ✅ copyWith 메서드 추가
+  DiaryEntry copyWith({
+    String? id,
+    String? originalText,
+    String? summary,
+    String? emotion,
+    DateTime? createdAt,
+  }) {
+    return DiaryEntry(
+      id: id ?? this.id,
+      originalText: originalText ?? this.originalText,
+      summary: summary ?? this.summary,
+      emotion: emotion ?? this.emotion,
+      createdAt: createdAt ?? this.createdAt,
+    );
+  }
 }

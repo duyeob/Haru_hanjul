@@ -1,83 +1,83 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import '../models/diary_entry.dart';
-import '../utils/emotion_mapper.dart';
 
-class DiaryDetailScreen extends StatelessWidget {
+class DiaryDetailScreen extends StatefulWidget {
   final DiaryEntry entry;
 
   const DiaryDetailScreen({super.key, required this.entry});
 
   @override
+  State<DiaryDetailScreen> createState() => _DiaryDetailScreenState();
+}
+
+class _DiaryDetailScreenState extends State<DiaryDetailScreen> {
+  late TextEditingController _summaryController;
+  late Box<DiaryEntry> diaryBox;
+
+  @override
+  void initState() {
+    super.initState();
+    _summaryController = TextEditingController(text: widget.entry.summary);
+    diaryBox = Hive.box<DiaryEntry>('diaryBox');
+  }
+
+  void _saveEditedSummary() async {
+    final updatedEntry = widget.entry.copyWith(summary: _summaryController.text);
+    await diaryBox.put(widget.entry.id, updatedEntry);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('요약이 저장되었습니다.')),
+    );
+
+    setState(() {}); // UI 반영
+  }
+
+  @override
+  void dispose() {
+    _summaryController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final dateStr = entry.createdAt.toLocal().toString().split(' ')[0];
-    final emoji = getEmoji(entry.emotion);
-    final emotionColor = getColor(entry.emotion);
-
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('일기 상세 보기'),
-        backgroundColor: Colors.teal,
-      ),
+      appBar: AppBar(title: const Text('일기 상세 보기')),
       body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: ListView(
-          children: [
-            Text(
-              '🗓 작성일',
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            const SizedBox(height: 4),
-            Text(
-              dateStr,
-              style: const TextStyle(fontSize: 16),
-            ),
-            const SizedBox(height: 20),
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('작성일: ${widget.entry.createdAt.toLocal().toString().split(' ')[0]}'),
+              const SizedBox(height: 16),
 
-            Text(
-              '📝 원본 내용',
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              entry.originalText,
-              style: const TextStyle(fontSize: 16),
-            ),
-            const SizedBox(height: 20),
+              Text('내용:', style: Theme.of(context).textTheme.titleMedium),
+              const SizedBox(height: 8),
+              Text(widget.entry.originalText),
+              const SizedBox(height: 16),
 
-            Text(
-              '📌 요약',
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              entry.summary,
-              style: const TextStyle(fontSize: 16),
-            ),
-            const SizedBox(height: 20),
-
-            Text(
-              '😊 감정 분석',
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            const SizedBox(height: 8),
-            Row(
-              children: [
-                Text(
-                  emoji,
-                  style: const TextStyle(fontSize: 28),
+              Text('요약 (수정 가능):', style: Theme.of(context).textTheme.titleMedium),
+              const SizedBox(height: 8),
+              TextField(
+                controller: _summaryController,
+                maxLines: null,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
                 ),
-                const SizedBox(width: 8),
-                Text(
-                  entry.emotion,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: emotionColor,
-                  ),
-                ),
-              ],
-            ),
-          ],
+              ),
+              const SizedBox(height: 16),
+
+              ElevatedButton.icon(
+                onPressed: _saveEditedSummary,
+                icon: const Icon(Icons.save),
+                label: const Text('요약 저장하기'),
+              ),
+
+              const SizedBox(height: 24),
+              Text('감정: ${widget.entry.emotion}'),
+            ],
+          ),
         ),
       ),
     );
