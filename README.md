@@ -1,8 +1,7 @@
 # 🌟 하루한줄 (Haru-Hanjul)
 
 [📅 간트 차트 바로가기](https://www.notion.so/1f942f036609808b831adc7c932b91ba?v=1f942f036609811ebfa2000c717bd241&pvs=4)
-![image](https://github.com/user-attachments/assets/3b16a76b-a87d-4378-8e06-43de0cad01fc)
-
+![image](https://github.com/user-attachments/assets/d66334b6-7294-42ff-bac0-7082357b2901)
 
 
 
@@ -62,9 +61,49 @@ Flutter와 Dart를 기반으로 개발되었으며, Android와 iOS 플랫폼을 
 
   사용자가 적은 일기의 감정을 총합하여 차트로 제공합니다.
 
-정   |
-| 5주차 | 6/10 ~ 6/16 | 통합 테스트, 디버깅               | 100%     |    -    |
-| 6주차 이후 | 6/17~  | 피드백 반영             | 100%      |    -    |
+---
+
+## 🎯 개발 목적
+
+- Flutter 및 Dart를 활용한 실전 앱 개발 경험
+- 외부 API 및 자연어 처리 모델 활용 경험 축적
+- 백엔드와 프론트엔드 간의 통신 구조 학습
+- 개인 감정 기록의 새로운 UX 제안
+
+---
+
+## 🛠️ 기술 스택
+
+| 분야 | 기술 |
+|------|------|
+| **프론트엔드** | Flutter (Dart), Hive (로컬 DB) |
+| **백엔드** | Python Flask, transformers (Hugging Face), Google Cloud Translation API |
+| **외부 API** | Google Cloud Translation API, Hugging Face Summarization/Emotion 모델 |
+| **통신** | RESTful API (HTTP 통신, CORS 처리) |
+
+---
+
+## 📦 앱 동작 흐름
+
+1. 사용자가 **한글로 일기 작성**
+2. 일기 내용을 **Google Cloud Translation API**로 영어 번역
+3. 번역된 일기를 **Flask 서버**로 전송
+4. Flask 서버에서 **transformers 모델**을 통해 요약 및 감정 분석 수행
+5. 결과(요약, 감정)를 다시 **한글로 번역**
+6. Flutter 앱에서 결과를 **텍스트와 이모티콘**으로 시각화
+
+---
+
+## 🗓️ 개발 일정
+
+| 주차 | 기간         | 작업 내용                          | 진행률 |    이슈 사항    |
+|------|--------------|------------------------------------|--------|------------------|
+| 1주차 | 5/13 ~ 5/19 | 요구사항 정의, 환경 셋팅         | 100%   |    api호출 변경으로 인한 요구사항 수정   |
+| 2주차 | 5/20 ~ 5/26 | UI 개발, Hive 로컬 저장소 구축    | 100%   |    -    |
+| 3주차 | 5/27 ~ 6/2  | Flask 백엔드 구축       | 100%    |    Flask서버 호출 오류 해결    |
+| 4주차 | 6/3 ~ 6/9   | Google Cloud Translation API 연동, 번역 & 통신 구현 | 100%    |    Hugging Face API 호출 오류로 인한 로직 수정   |
+| 5주차 | 6/10 ~ 6/16 | 통합 테스트 및 다듬기               | 100%    |    -    |
+| 6주차 이후 | 6/17~  | 피드백 반영 및 고도화             | 100%      |    서브 기능 추가    |
 
 ---
 
