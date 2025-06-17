@@ -12,11 +12,17 @@
 Flutter와 Dart를 기반으로 개발되었으며, Android와 iOS 플랫폼을 모두 지원합니다.
 
 [1주차 활동 보고서](https://www.notion.so/1-1f942f03660981909f79e75fca62d984?source=copy_link)
+
 [2주차 활동 보고서](https://www.notion.so/2-21542f03660980399857f6ddf2f7708c?source=copy_link)
+
 [3주차 활동 보고서](https://www.notion.so/3-21542f03660980199eedd25f1ddb5f64?source=copy_link)
+
 [4주차 활동 보고서](https://www.notion.so/4-21542f0366098098b308ce8e67377c27?source=copy_link)
+
 [5주차 활동 보고서](https://www.notion.so/5-21542f03660980ba8530c919a87615e8?source=copy_link)
+
 [6주차 활동 보고서](https://www.notion.so/6-21542f036609806ba085deae2989cfa0?source=copy_link)
+
 ---
 
 ## 📋 요구사항
