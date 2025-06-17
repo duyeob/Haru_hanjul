@@ -1,7 +1,8 @@
 # 🌟 하루한줄 (Haru-Hanjul)
 
 [📅 간트 차트 바로가기](https://www.notion.so/1f942f036609808b831adc7c932b91ba?v=1f942f036609811ebfa2000c717bd241&pvs=4)
-![image](https://github.com/user-attachments/assets/d66334b6-7294-42ff-bac0-7082357b2901)
+![image](https://github.com/user-attachments/assets/e5479362-8455-484b-ade6-dee8add71a74)
+
 
 
 
@@ -10,6 +11,12 @@
 **하루한줄**은 사용자가 하루 동안의 감정과 생각을 기록하면, 이를 자동으로 **요약**하고 **감정 분석**을 통해 결과를 **이모티콘으로 시각화**해주는 일기 애플리케이션입니다.  
 Flutter와 Dart를 기반으로 개발되었으며, Android와 iOS 플랫폼을 모두 지원합니다.
 
+[1주차 활동 보고서](https://www.notion.so/1-1f942f03660981909f79e75fca62d984?source=copy_link)
+[2주차 활동 보고서](https://www.notion.so/2-21542f03660980399857f6ddf2f7708c?source=copy_link)
+[3주차 활동 보고서](https://www.notion.so/3-21542f03660980199eedd25f1ddb5f64?source=copy_link)
+[4주차 활동 보고서](https://www.notion.so/4-21542f0366098098b308ce8e67377c27?source=copy_link)
+[5주차 활동 보고서](https://www.notion.so/5-21542f03660980ba8530c919a87615e8?source=copy_link)
+[6주차 활동 보고서](https://www.notion.so/6-21542f036609806ba085deae2989cfa0?source=copy_link)
 ---
 
 ## 📋 요구사항
