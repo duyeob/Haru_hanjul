@@ -9,7 +9,7 @@
 > 하루를 기록하고, 감정을 이모티콘으로 표현해보세요.
 
 **하루한줄**은 사용자가 하루 동안의 감정과 생각을 기록하면, 이를 자동으로 **요약**하고 **감정 분석**을 통해 결과를 **이모티콘으로 시각화**해주는 일기 애플리케이션입니다.  
-Flutter와 Dart를 기반으로 개발되었으며, Android와 iOS 플랫폼을 모두 지원합니다.
+**하루한줄**은 Flutter와 Dart를 기반으로 개발되었습니다.
 
 [1주차 활동 보고서](https://www.notion.so/1-1f942f03660981909f79e75fca62d984?source=copy_link)
 
@@ -37,10 +37,9 @@ Flutter와 Dart를 기반으로 개발되었으며, Android와 iOS 플랫폼을 
 7. 리스트에서 특정 일기를 선택하면 상세 내용(원문, 요약, 감정 이모티콘)을 볼 수 있어야 한다.
 
 ### 비기능 요구사항
-1. 앱은 Android 및 iOS 양쪽에서 동작해야 한다.
-2. 감정 분석 및 요약 기능은 인터넷 연결이 필요하며, 서버 API 오류에 대한 예외 처리가 되어야 한다.
-3. 번역 및 분석 요청은 비동기적으로 처리되어야 하며, 사용자에게 로딩 UI 또는 상태를 표시해야 한다.
-4. UI는 간단하고 직관적이어야 하며, 하루 1줄 일기라는 컨셉을 유지해야 한다.
+1. 감정 분석 및 요약 기능은 인터넷 연결이 필요하며, 서버 API 오류에 대한 예외 처리가 되어야 한다.
+2. 번역 및 분석 요청은 비동기적으로 처리되어야 하며, 사용자에게 로딩 UI 또는 상태를 표시해야 한다.
+3. UI는 간단하고 직관적이어야 하며, 하루 1줄 일기라는 컨셉을 유지해야 한다.
 
 ---
 
@@ -91,7 +90,7 @@ Flutter와 Dart를 기반으로 개발되었으며, Android와 iOS 플랫폼을 
 |------|------|
 | **프론트엔드** | Flutter (Dart), Hive (로컬 DB) |
 | **백엔드** | Python Flask, transformers (Hugging Face), Google Cloud Translation API |
-| **외부 API** | Google Cloud Translation API, Hugging Face Summarization/Emotion 모델 |
+| **외부 API** | Google Cloud Translation API, transformers (Hugging Face)  |
 | **통신** | RESTful API (HTTP 통신, CORS 처리) |
 
 ---
@@ -123,8 +122,6 @@ Flutter와 Dart를 기반으로 개발되었으며, Android와 iOS 플랫폼을 
 ## 🔌 사용 API 및 모델
 
 - [Hugging Face Transformers](https://huggingface.co/)
-- [Hugging Face Summarization](https://huggingface.co/)
-- [Hugging Face emotion](https://huggingface.co/)
 - [Google Cloud Translation API](https://cloud.google.com/translate)
 
 ---
