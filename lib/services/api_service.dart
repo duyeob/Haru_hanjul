@@ -22,3 +22,20 @@ class ApiService {
     }
   }
 }
+
+
+// emotion_mapper.dart
+String mapEmotionToEmoji(String emotion) {
+  switch (emotion.toLowerCase()) {
+    case 'happy':
+      return '😊';
+    case 'sad':
+      return '😢';
+    case 'angry':
+      return '😡';
+    case 'neutral':
+      return '😐';
+    default:
+      return '❓';
+  }
+}

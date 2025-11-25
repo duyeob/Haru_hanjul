@@ -45,14 +45,14 @@ class _SummaryScreenState extends State<SummaryScreen> {
     } catch (e) {
       setState(() {
         isLoading = false;
-        summary = '에러 발생';
+        summary = '분석 중 오류가 발생했습니다.';
         emotion = 'Unknown';
       });
     }
   }
 
   void _goToDiaryList() {
-    Navigator.pushNamed(context, '/list');
+    Navigator.pushReplacementNamed(context, '/list');
   }
 
   @override
@@ -61,86 +61,115 @@ class _SummaryScreenState extends State<SummaryScreen> {
     final color = getColor(emotion);
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF7F7F7),
+      backgroundColor: const Color(0xFFF0F4F8),
       appBar: AppBar(
-        title: const Text('분석 결과'),
-        backgroundColor: Colors.teal,
+        title: Text(
+          '분석 결과',
+          style: TextStyle(
+            color: Colors.grey.shade700,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
       ),
       body: Center(
         child: isLoading
-            ? const CircularProgressIndicator()
-            : Padding(
+            ? Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircularProgressIndicator(color: Colors.teal.shade400),
+            const SizedBox(height: 20),
+            Text(
+              '당신의 감정을 분석 중입니다...',
+              style: TextStyle(color: Colors.grey.shade600, fontSize: 16),
+            ),
+          ],
+        )
+            : SingleChildScrollView(
           padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Card(
-                elevation: 4,
+                elevation: 10, // 드롭 쉐도우
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(20),
                 ),
+                color: Colors.white,
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(24.0),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Text(
-                        '요약 결과',
+                      Text(
+                        '오늘의 핵심 감정',
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 16,
+                          color: Colors.grey.shade600,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      CircleAvatar(
+                        radius: 40,
+                        backgroundColor: color.withOpacity(0.15),
+                        child: Text(
+                          emoji,
+                          style: const TextStyle(fontSize: 40),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        emotion,
+                        style: TextStyle(
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
+                          color: color,
+                        ),
+                      ),
+                      const Divider(height: 35, indent: 20, endIndent: 20),
+                      Text(
+                        '하루 요약',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey.shade600,
+                          fontWeight: FontWeight.w400,
                         ),
                       ),
                       const SizedBox(height: 12),
                       Text(
                         summary,
-                        style: const TextStyle(fontSize: 16),
+                        style: const TextStyle(
+                          fontSize: 16,
+                          height: 1.6,
+                          color: Colors.black87,
+                        ),
                         textAlign: TextAlign.center,
                       ),
                     ],
                   ),
                 ),
               ),
-              const SizedBox(height: 24),
-              Column(
-                children: [
-                  const Text(
-                    '감정 분석',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  CircleAvatar(
-                    radius: 30,
-                    backgroundColor: color.withOpacity(0.2),
-                    child: Text(
-                      emoji,
-                      style: const TextStyle(fontSize: 30),
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    emotion.toUpperCase(),
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: color,
-                    ),
-                  ),
-                ],
-              ),
               const SizedBox(height: 40),
               ElevatedButton.icon(
                 onPressed: _goToDiaryList,
-                icon: const Icon(Icons.list),
-                label: const Text('일기 목록 보기'),
+                icon: const Icon(Icons.menu_book, size: 24),
+                label: const Text(
+                  '일기 목록으로',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.teal,
+                  backgroundColor: Colors.teal.shade500,
                   foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 24, vertical: 14),
-                  textStyle: const TextStyle(fontSize: 16),
+                  elevation: 6, // 드롭 쉐도우
+                  padding: const EdgeInsets.symmetric(vertical: 18),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  textStyle: const TextStyle(fontSize: 17),
                 ),
               ),
             ],

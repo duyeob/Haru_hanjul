@@ -3,9 +3,11 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'models/diary_entry.dart';
 import 'screens/input_screen.dart';
 import 'screens/diary_list_screen.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('ko_KR', null);
   await Hive.initFlutter();
   Hive.registerAdapter(DiaryEntryAdapter());
   await Hive.openBox<DiaryEntry>('diaryBox');

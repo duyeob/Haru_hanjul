@@ -1,0 +1,310 @@
+[33mcommit eeba816cd7212ae22098e0d200d34b375507d2dc[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mtest[m[33m)[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Sun Aug 10 23:36:05 2025 +0900
+
+    수정
+
+[33mcommit f0c8dfe2c85afe85e2fedf2ee3fb49a8d5a376f1[m[33m ([m[1;31morigin/test[m[33m)[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Wed Jun 18 03:00:27 2025 +0900
+
+    코드 경량화
+
+[33mcommit 3c116fbdd59e3edfa111e3643ae4e64b7fe2aac1[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Tue Jun 17 19:52:20 2025 +0900
+
+    Update README.md
+
+[33mcommit 4dacfcf952a5a187fa4de005f914f9179e22956d[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Tue Jun 17 19:52:02 2025 +0900
+
+    Update README.md
+
+[33mcommit 3b014885efc51eba6dad7a6e1297155425ef3085[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Tue Jun 17 19:17:18 2025 +0900
+
+    Update README.md
+
+[33mcommit da94a5cb2e51da5bd96fd65618437db70216575d[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Tue Jun 17 19:10:28 2025 +0900
+
+    Update README.md
+
+[33mcommit 688db09de322b0d8524334d2ff33a2cff05abd26[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Tue Jun 17 19:00:40 2025 +0900
+
+    Update README.md
+
+[33mcommit ffc659649fd22379710d034b1238ec5c6c2635b7[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Tue Jun 17 18:56:33 2025 +0900
+
+    Update README.md
+
+[33mcommit 3dc33d7462b30a349bae1ec3b99a1316f84593c9[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Tue Jun 17 18:54:26 2025 +0900
+
+    Update README.md
+
+[33mcommit 263a10691608e781211b21defcaf7ef44761d97c[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Tue Jun 17 18:02:06 2025 +0900
+
+    Update README.md
+
+[33mcommit 8d60b5bb55692a63c3f6fe3a8fe8f3008eb118e4[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Tue Jun 17 16:54:44 2025 +0900
+
+    Update README.md
+
+[33mcommit a57ca41d5d1e1b36a3970a93dea7aff748c86f01[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Mon Jun 16 15:27:35 2025 +0900
+
+    Update README.md
+
+[33mcommit 4ec56d8a69415a664d639ab431a3bb490572be5b[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Sat Jun 14 23:27:44 2025 +0900
+
+    Update README.md
+
+[33mcommit bc68a3d3208c2cd76501c6a029281329b198c52e[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Sat Jun 14 23:26:16 2025 +0900
+
+    Update README.md
+
+[33mcommit 3cf4c0cff6f01e2295257cab0d845ea75751945e[m
+Merge: b09253b 1cb3e0c
+Author: duyeob <suk9723103@gmail.com>
+Date:   Wed Jun 11 13:39:35 2025 +0900
+
+    Merge pull request #14 from duyeob/test
+    
+    요약된 일기 수정 기능 추가
+
+[33mcommit 1cb3e0c025db07dbc795322083d2ca991fb1ba0a[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Wed Jun 11 13:38:01 2025 +0900
+
+    요약된 일기 수정 기능 추가
+
+[33mcommit b09253bd86527bf6fb44af5b77f916e4975f794c[m
+Merge: 39cc2a5 bd31614
+Author: duyeob <suk9723103@gmail.com>
+Date:   Tue Jun 10 22:56:03 2025 +0900
+
+    Merge pull request #13 from duyeob/test
+    
+    Update README.md
+
+[33mcommit bd31614dc5c6e6808292567088cd0e70b7640d20[m
+Merge: 2a30e5f 39cc2a5
+Author: duyeob <suk9723103@gmail.com>
+Date:   Tue Jun 10 22:55:56 2025 +0900
+
+    Merge branch 'main' into test
+
+[33mcommit 2a30e5f85efd3b97ed7655a75965246bf4a467cd[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Tue Jun 10 22:50:42 2025 +0900
+
+    Update README.md
+
+[33mcommit 39cc2a58b932728c26cbb94d21a8e23ff9cd2a84[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Tue Jun 10 22:44:58 2025 +0900
+
+    Update README.md
+
+[33mcommit 3e20e448caf1f696cc201570704bd5bf20757b29[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Tue Jun 10 22:44:27 2025 +0900
+
+    Update README.md
+
+[33mcommit 457752ce9b7e4f02d58d90cd01aadcdf22d86dab[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Tue Jun 10 22:44:07 2025 +0900
+
+    Update README.md
+
+[33mcommit fd5bdfaa829a69b91a7a05d7061af19722a3f89c[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Tue Jun 10 22:41:01 2025 +0900
+
+    Delete backend directory
+
+[33mcommit 1dfad72905745406e7b52e19970b19e5a5e875e1[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Mon Jun 9 17:15:14 2025 +0900
+
+    README.md 업데이트
+
+[33mcommit 648b4a96730d2eac2cbaa6f6d45f0d5e22554584[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Mon Jun 9 15:08:01 2025 +0900
+
+    Update README.md
+
+[33mcommit 6cfe022e0c49793e9f6baaf909ad2e6da406b87d[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Mon Jun 9 14:45:20 2025 +0900
+
+    Update README.md
+
+[33mcommit 6cff404762f72a7daadb052d3dd730f3d203b4f5[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Mon Jun 9 14:42:01 2025 +0900
+
+    Update README.md
+
+[33mcommit f1439319adc80a239bf6298ffb57b5a5ed84e8cd[m
+Merge: 9cd443a 51755f9
+Author: duyeob <suk9723103@gmail.com>
+Date:   Mon Jun 9 14:38:16 2025 +0900
+
+    Merge pull request #11 from duyeob/test
+    
+    개선본
+
+[33mcommit 51755f998e38eab46ff6c8dc658e079906d6165b[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Mon Jun 9 14:28:22 2025 +0900
+
+    Update AndroidManifest.xml
+
+[33mcommit 64e1dc6d8514166ff646e3064e9523b5dd04f244[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Mon Jun 9 14:28:08 2025 +0900
+
+    ip수정
+
+[33mcommit 9cd443a406cd7c6e167a56d7f9bfc430f7419b77[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Sun Jun 8 18:42:32 2025 +0900
+
+    Update README.md
+
+[33mcommit 8a0454da321d2389c384dc6cfc569b4a1c31493b[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Sat Jun 7 22:11:15 2025 +0900
+
+    Update README.md
+
+[33mcommit 8fe5de45d366d069292e55af4f9b726102a73c97[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Fri Jun 6 23:48:16 2025 +0900
+
+    UI개선
+
+[33mcommit d4372c6a734278c8152e4800044f12387c2b6818[m
+Merge: e22e076 348ac80
+Author: duyeob <suk9723103@gmail.com>
+Date:   Thu Jun 5 15:11:01 2025 +0900
+
+    Merge pull request #10 from duyeob/test
+    
+    Test
+
+[33mcommit e22e076dc1aa7d77dc422c856b8ab18f30457be7[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Thu Jun 5 15:10:44 2025 +0900
+
+    Update README.md
+
+[33mcommit 348ac80dd3f999e6c5af77b4957890e8f851f88d[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Thu Jun 5 14:40:56 2025 +0900
+
+    요약 해결
+
+[33mcommit 1bc48b6459220d569353fe0b68cc8254728eed7d[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Wed Jun 4 23:02:11 2025 +0900
+
+    테스트 앱 추출
+
+[33mcommit 65e5c344ca748d0a3cbddee301cc5783809b1cb8[m
+Merge: c4703a1 9d5b102
+Author: duyeob <suk9723103@gmail.com>
+Date:   Tue Jun 3 17:06:15 2025 +0900
+
+    Merge pull request #9 from duyeob/test
+    
+    Test
+
+[33mcommit 9d5b1024c62a93da0fef36ad608dc81fd78f9eb2[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Tue Jun 3 17:05:43 2025 +0900
+
+    앱 추출을 위한
+
+[33mcommit 16a8263dbd9a1c0704f756f781e7e8fa2b6f21c7[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Tue Jun 3 15:57:27 2025 +0900
+
+    Delete widget_test.dart
+
+[33mcommit c4703a1aef8a3d441acf46ee94756c94d4f3fd03[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Mon Jun 2 16:06:24 2025 +0900
+
+    Update README.md
+
+[33mcommit cf31506fa16f0cd7e5cc399bdeb7ab2b204b3f5d[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Mon Jun 2 16:06:02 2025 +0900
+
+    Update README.md
+
+[33mcommit bbafe5735ffa905e3f42adf44789459f6e24b728[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Mon Jun 2 16:01:20 2025 +0900
+
+    Update README.md
+
+[33mcommit 6f28a3b7f3533ee0084381d36ffb1e7445f5b636[m
+Merge: c5fa1e7 1dd99ef
+Author: duyeob <suk9723103@gmail.com>
+Date:   Mon Jun 2 15:55:09 2025 +0900
+
+    Merge pull request #8 from duyeob/test
+    
+    요약 부분 수정
+
+[33mcommit 1dd99ef25e34eb6ebcb946f82f2e2674b2972d14[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Mon Jun 2 15:54:31 2025 +0900
+
+    요약이 안됌(감정 부분 점수제로 수정)
+
+[33mcommit 1dd04e917ec3c71b7aba2d046b2aa543cb5709ea[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Mon Jun 2 15:31:53 2025 +0900
+
+    번역 api추가
+
+[33mcommit c5fa1e7410ac765d7be412ed769374f229b5e01b[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Thu May 29 22:08:50 2025 +0900
+
+    Update README.md
+
+[33mcommit 1eff7bb129d1275ff9c230c81411cc1c711a8c91[m
+Author: duyeob <suk9723103@gmail.com>
+Date:   Thu May 29 15:53:07 2025 +0900
+
+    Update README.md
+
+[33mcommit 525b3e60ac61a30d5a2a6a655640ff112d037131[m
+Merge: 083d560 ff51af6
+Author: duyeob <suk9723
